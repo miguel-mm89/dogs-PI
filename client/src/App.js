@@ -6,6 +6,7 @@ import LandingPage from "./routes/landingPage";
 
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -14,6 +15,7 @@ function App() {
         <Route path="/createdog" element={<CreateDog />} />
       </Routes>
     </BrowserRouter>
+    </>
   );
 }
 

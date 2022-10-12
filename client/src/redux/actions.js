@@ -28,13 +28,14 @@ export function getDogs() {
   };
 }
 
+
 export function getTemperaments() {
   return async function (dispatch) {
     try {
       var res = await axios.get("http://localhost:3001/temperaments");
       return dispatch({
         type: GET_TEMPERAMENTS,
-        payload: res.data,
+        payload: res.data
       });
     } catch (error) {
       alert(error);
@@ -78,7 +79,6 @@ export function getDetail(id) {
 
 export function getByTemperaments(payload) {
   return function (dispatch) {
-   // console.log(payload);
     dispatch({ type: GET_BY_TEMPERAMENTS, payload });
     
   };
@@ -86,7 +86,6 @@ export function getByTemperaments(payload) {
 
 export function filterBy(payload) {
   return function (dispatch) {
-    console.log()
     dispatch({ type: FILTER_BY, payload });
   };
 }

@@ -21,6 +21,7 @@ const Home = () => {
 
   if (filtered === "LOADING...") {
     return (
+      <>
       <section>
         <NavBar />
         <FilterBy />
@@ -37,6 +38,7 @@ const Home = () => {
           </div>
         </Loader>
       </section>
+      </>
     );
   }
   return (
@@ -44,7 +46,8 @@ const Home = () => {
       <NavBar />
       <FilterBy />
       {filtered === 'NO FOUND' ? <h2>NO FOUND</h2> :
-      filtered === 'NO_BREEDS'? <h2>BREEDS DOGS ARE NOT CREATED</h2> 
+      filtered === 'NO_BREEDS'? <h2>BREEDS DOGS <br/>
+      HAS NOT BEEN CREATED</h2> 
       : <HomeCards /> }
     </section>
   );

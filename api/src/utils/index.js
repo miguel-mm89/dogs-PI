@@ -19,27 +19,34 @@ const dogsDBinfo = async ()=>{
     return dogsDB1
 }
 const dogsAPIinfo = async ()=>{
-    
-        let response = await axios.get(URL);
-           
+        let response = await axios.get(URL); 
             const conv = (data) =>{
             if(data)
             return data.split(', ')}
-
-                        
+            const conv1 = (data) =>{
+                if(data){
+                return data} else{
+                    return 'null'
+                }
+            }
+                     
             const dogsREADY = response.data 
-             .map(d => {
-                
-                 return{
-                     id: d.id,
-                     name: d.name,
-                     weight: d.weight.metric,
-                     height: d.height.metric,
-                     life_span: d.life_span,
-                     temperaments:conv(d.temperament), 
-                     image: d.image.url
-                     }
-             });
+            .map(d => {
+               
+                return{
+                    id: d.id,
+                    name: d.name,
+                    weight: d.weight.metric,
+                    height: d.height.metric,
+                    life_span: d.life_span,
+                    temperaments:conv(d.temperament), 
+                    origin: conv1(d.origin),
+                    country_code: conv1(d.country_code),
+                    bred_for: conv1(d.bred_for),
+                    breed_group:conv1(d.breed_group),
+                    image: d.image.url
+                    }
+            });
         
              return dogsREADY
             }

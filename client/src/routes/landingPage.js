@@ -5,7 +5,7 @@ const LandingPage = () =>{
    return( 
    <BodyPage>
     <Link to='/home'  >
-    Please, Barke !!!
+    Please, Bark !!!
     </Link>
     </BodyPage>
 )
