@@ -49,18 +49,6 @@ export function getByName(payload) {
   };
 }
 
-// export function getByName(name) {
-//   return function (dispatch) {
-//     return axios
-//       .get(`http://localhost:3001/dogs?name=${name}`)
-//       .then((res) => {
-//        dispatch({ type: GET_BY_NAME, payload: res.data });
-//       })
-//       .catch((err) => {
-//         dispatch({ type: GET_BY_NAME, payload: 'NO FOUND' })
-//       });
-//   };
-// }
 
 export function getDetail(id) {
   return function (dispatch) {
@@ -102,12 +90,6 @@ export function orderBy(order) {
     dispatch({ type: ORDER_BY, payload: order });
     };
 }
-
-export function deleteiD(id){
-  return function (dispatch){
-    console.log(id)
-    dispatch({type:DELETE, payload: id})
-  }}
 
 export function clean(){
   return function(dispatch){

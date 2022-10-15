@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const { Router } = require("express");
 const router = Router();
-const { dogsDBinfo, dogsAPI, dogsTOTALinfo, dogsAPIinfo } = require("../utils/index.js");
+const { dogsDBinfo, dogsTOTALinfo, dogsAPIinfo } = require("../utils/index.js");
 const { Dog, Temperament } = require("../db");
 
 router.get("/", async (req, res) => {
@@ -49,7 +49,6 @@ router.get("/:idRaza", async (req, res) => {
     dogDB = JSON.stringify(dogDB);
     dogDB = JSON.parse(dogDB);
 
-    //dejo un array con los nombres de temp solamente
     dogDB.temperaments = dogDB.temperaments.map((d) => d.name + ", ");
     res.json(dogDB);
   } else {
@@ -68,7 +67,6 @@ router.get("/:idRaza", async (req, res) => {
         reference_image_id,
       } = response.data;
 
-      //CONVIERTO TODO A JSON CON SOLAMENTE LOS CAMPOS QUE ME PIDIERON Y LO RETORNO
       return res.json({
         id,
         name,
@@ -96,28 +94,40 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ msg: "faltan datos" });
 
   try {
-    image = await (
+    let imageRandom = await (
       await axios.get("https://dog.ceo/api/breeds/image/random")
     ).data.message;
     const dogCREATED = await Dog.findOrCreate({
-      //devuelvo un array (OJOOO!!!!)
 
       where: {
         name: capitalizar(name),
         weight,
         height,
         life_span,
-        image: image || "https://dog.ceo/api/breeds/image/random",
+        image: image? image: imageRandom,
       },
     });
 
-    await dogCREATED[0].setTemperaments(temperament); // relaciono ID genres al juego creado
-    //console.log(dogCREATED[0])
+    await dogCREATED[0].setTemperaments(temperament); 
 
     res.status(200).json(dogCREATED);
   } catch (err) {
     throw new Error(err);
   }
 });
+
+router.delete('./', async (req, res)=>{
+  try {
+    let {name} = req.query
+    await dog.destroy({
+      where: {
+        name: name
+      }
+    })
+    res.status(200).json('borrado')
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router;

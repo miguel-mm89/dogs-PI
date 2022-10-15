@@ -1,4 +1,4 @@
-import { getDogs, getTemperaments } from "../redux/actions";
+import { chargeAll, getDogs, getTemperaments } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -6,6 +6,8 @@ import FilterBy from "./components/filterBy";
 import HomeCards from "./components/homeCards";
 import NavBar from "./components/navBar";
 import styled from "styled-components";
+
+import Nofound from './../pics/saddog.jpg'
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -45,9 +47,20 @@ const Home = () => {
     <section>
       <NavBar />
       <FilterBy />
-      {filtered === 'NO FOUND' ? <h2>NO FOUND</h2> :
-      filtered === 'NO_BREEDS'? <h2>BREEDS DOGS <br/>
-      HAS NOT BEEN CREATED</h2> 
+      {filtered === 'NO FOUND' ?
+      <ContentDiv>
+        <img src={Nofound} alt='No Found Dog'/>
+        <h3>NO FOUND</h3> 
+        <button onClick={()=> dispatch(chargeAll())}>TRY AGAIN</button>
+      </ContentDiv> :
+      filtered === 'NO_BREEDS'? 
+      <ContentDiv>
+      <img src={Nofound} alt='No Found Dog'/>
+      <h3>BREED DOGS
+      HAS NOT BEEN CREATED</h3>    
+      <button onClick={()=> dispatch(chargeAll())}>TRY AGAIN</button>
+    </ContentDiv>
+   
       : <HomeCards /> }
     </section>
   );
@@ -146,4 +159,39 @@ align-items: center;
 }
 
 `;
+
+export const ContentDiv = styled.div`
+width: 650px;
+height: 600px;
+margin: auto;
+margin-top: 50px;
+background-color: rgb(17, 17, 17,.5);
+text-align: center;
+color: whitesmoke;
+border-radius: 10px;
+
+img{
+    width: 80%;
+    margin-top: 35px;
+}
+
+h3{
+   margin-left: auto;
+   margin-right: auto;
+   padding: 15px;
+   margin-bottom: 35px;
+}
+
+button{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #c98b19;
+    color: whitesmoke;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    cursor: pointer;
+}
+
+`
 export default Home;

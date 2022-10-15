@@ -11,17 +11,17 @@ const HomeCards = () => {
 
   const [cardPerPage] = useState(8);
 
-  //* indices de la paginación:
+
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
-  var currentCards; //"cards" que se deben mostrar en la pantalla
+  var currentCards;
 
-  // en caso de que al buscar un perro en particular no encuentra ninguno
+  
   if (typeof filtered === "string") {
     currentCards = filtered;
   } else {
-    currentCards = filtered.slice(indexOfFirstCard, indexOfLastCard); //uso los indices para "fraccionar que perro muestro"
+    currentCards = filtered.slice(indexOfFirstCard, indexOfLastCard);
   }
   
   return (
@@ -112,7 +112,7 @@ export const CardDiv = styled.div`
     text-decoration: none;
     color: white;
     padding: 7px 15px;
-    background-color: rgb(26, 94, 81);
+    background-color: #c98b19;
     border-radius: 5px;
     cursor: pointer;
     margin-top: auto;

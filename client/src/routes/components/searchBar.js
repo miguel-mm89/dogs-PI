@@ -12,11 +12,15 @@ const SearchBar = () =>{
     const dispatch = useDispatch()
     
     const [search, setSearch] = useState(initialValues);
+
     const handlechange = (e) => {
         setSearch({[e.target.name]:e.target.value})
     }
     const handleSubmit = (e) =>{
-        e.preventDefault()
+        e.preventDefault();
+        if(search.dog.charAt(0) === ' '|| search.dog.length === 0){
+            alert('Must spell a leather')
+        }
         dispatch(getByName(search.dog))
         setSearch(initialValues)
     }

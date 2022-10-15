@@ -13,8 +13,8 @@ const NavBar = () => {
       </NavLink>
       </Title>
       <Routediv>
-      <NavLink to='/'>INTRO</NavLink>
       <NavLink to='/home'>HOME</NavLink>
+      <NavLink to='/about'>ABOUT</NavLink>
       <NavLink to='/createdog' className='principal'>CREATE DOG</NavLink>
       </Routediv>
       </NavContainer>
@@ -47,7 +47,7 @@ margin-left: auto;
 margin-right: auto;
 `
 const Routediv = styled.div`
-width: 35%;
+width: 40%;
 justify-content: space-between;
 text-align: end;
 margin-top: auto;

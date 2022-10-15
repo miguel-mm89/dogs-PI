@@ -3,6 +3,7 @@ import DogDetail from "./routes/dogDetail";
 import Home from "./routes/home";
 import CreateDog from "./routes/createDog";
 import LandingPage from "./routes/landingPage";
+import About from "./routes/About";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route path="/dogs/:id" element={<DogDetail />} />
         <Route path="/createdog" element={<CreateDog />} />
+        <Route path="/about" element={<About />} />
+
       </Routes>
     </BrowserRouter>
     </>

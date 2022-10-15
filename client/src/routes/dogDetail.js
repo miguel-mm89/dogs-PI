@@ -21,7 +21,8 @@ const DogDetail = () =>{
 
     if (Object.entries(detail).length === 0) {
       return (
-        <section>
+        
+        <main>
           <NavBar />
           <FilterBy />
           <Loader>
@@ -36,7 +37,8 @@ const DogDetail = () =>{
               <div></div>
             </div>
           </Loader>
-        </section>
+        </main>
+      
       );
     }
 
@@ -53,7 +55,7 @@ const DogDetail = () =>{
             <p><b>Weight: </b>{detail.weight} KG.</p>
             <p><b>Life Span: </b>{detail.life_span}</p>
            <Link to="/home">
-            <button>Volver</button></Link>
+            <button>BACK HOME</button></Link>
         </ContainerDiv>
     </Details>
     </>
@@ -63,7 +65,6 @@ const DogDetail = () =>{
 const Details = styled.div`
 height: 100vh;
 padding-top: 50px;
-/* background-color: rgb(251,157,55); */
 `
 
 const ContainerDiv = styled.section`
@@ -72,10 +73,11 @@ width: 700px;
 display: flex;
 flex-direction: column;
 text-align: center;
-background-color: rgb(0,0,0,.1);
+background-color: rgb(0,0,0,.3);
 border-radius: 10px;
 border: 1px solid black;
-box-shadow: 4px 3px 0 0 rgb(27, 29, 29,.5);
+box-shadow: 4px 3px 0 0 rgb(27, 29, 29,.7);
+color: whitesmoke;
 
 img{
   width: 600px;

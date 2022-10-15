@@ -56,25 +56,6 @@ function rootReducer(state = initialState, action) {
           filtered: byname
         }
 
-      // return {
-      //   ...state,
-      //   filtered: state.dogs.filter(item =>
-      //     item.name.toLowerCase().includes(action.payload.toLowerCase())
-      //   ),
-      // };
-      // case GET_BY_NAME:
-      //   return {
-      //     ...state,
-      //     filtered: action.payload
-      //   };
-  
-
-    case DELETE:
-      return {
-        ...state,
-        filtered: state.filtered.filter((el) => el.id !== action.payload),
-      };
-
     case GET_BY_TEMPERAMENTS:
       return {
         ...state,

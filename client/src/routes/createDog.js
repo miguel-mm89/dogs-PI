@@ -6,7 +6,6 @@ import styled from "styled-components";
 import NavBar from "./components/navBar";
 import { Link } from "react-router-dom";
 
-
 const CreateDog = () => {
   const tempForm = useSelector((state) => state.temperaments);
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const CreateDog = () => {
     height: `${completed.heightmin} - ${completed.heightmax}`,
     weight: `${completed.weightmin} - ${completed.weightmax}`,
     life_span: `${completed.life_spanmin} - ${completed.life_spanmax} years`,
-    temperament: completed.temperaments.map(item => item.id),
+    temperament: completed.temperaments.map((item) => item.id),
     image: completed.image,
   };
 
@@ -79,7 +78,9 @@ const CreateDog = () => {
 
   const handleTemperaments = (e) => {
     if (!completed.temperaments.includes(e.target.value)) {
-      completed.temperaments.push(tempForm.find( item => item.name === e.target.value))
+      completed.temperaments.push(
+        tempForm.find((item) => item.name === e.target.value)
+      );
     }
     setErrors(
       validate({
@@ -95,7 +96,6 @@ const CreateDog = () => {
       validate({
         ...completed,
         [e.target.name]: e.target.value,
-
       })
     );
     if (Object.values(errors).length === 0) {
@@ -109,23 +109,21 @@ const CreateDog = () => {
   function handleDelete(name) {
     setCompleted({
       ...completed,
-      temperaments: completed.temperaments.filter(item => item.name !== name)
-    })
-    console.log(completed.temperaments)
-    console.log(name)
+      temperaments: completed.temperaments.filter((item) => item.name !== name),
+    });
   }
 
   return (
     <>
       <NavBar />
-      <section >
-        <FormContainer create ={create}>
+      <section>
+        <FormContainer create={create}>
           {!create ? (
             <h2>COMPLETE THE FORM</h2>
           ) : (
             <h2 className="create">BREED HAS BEEN CREATE SUCCESSFULLY</h2>
           )}
-          <Form onSubmit={(e) =>handleSubmit(e)}>
+          <Form onSubmit={(e) => handleSubmit(e)}>
             <Label>Breed Name:</Label>
             <input
               type="text"
@@ -197,7 +195,7 @@ const CreateDog = () => {
               onChange={handleChange}
             />
             <br />
-            <p>Temperaments:</p>   
+            <p>Temperaments:</p>
             <select name="temperaments" onChange={handleTemperaments}>
               <option value="default">Choose</option>
               {tempForm?.map((item) => (
@@ -205,19 +203,25 @@ const CreateDog = () => {
                   {item.name}
                 </option>
               ))}
-            </select> {errors.temperaments ? <label>{errors.temperaments}</label> : null}  
-            <Button create ={create}>
-            {!create ? (
-              <button type="submit">SUBMIT</button>
+            </select>{" "}
+            {errors.temperaments ? <label>{errors.temperaments}</label> : null}
+            <Button create={create}>
+              {!create ? (
+                <button type="submit">SUBMIT</button>
               ) : (
-                <Link onClick={() => dispatch(getDogs())} to='/home' >
-                    BACK HOME
-                  </Link>              
+                <Link onClick={() => dispatch(getDogs())} to="/home">
+                  BACK HOME
+                </Link>
               )}
-              </Button>
+            </Button>
           </Form>
           <Temperaments>
-            {completed.temperaments?.map((item) => (<div key={item.id}>{item.name} <button onClick={() => handleDelete(item.name)}>x</button></div>))}
+            {completed.temperaments?.map((item) => (
+              <div key={item.id}>
+                {item.name}{" "}
+                <button onClick={() => handleDelete(item.name)}>x</button>
+              </div>
+            ))}
           </Temperaments>
         </FormContainer>
       </section>
@@ -266,9 +270,7 @@ const Form = styled.form`
   select {
     margin-bottom: 15px;
   }
-
-`
-
+`;
 
 const Button = styled.div`
   background-color: ${(props) => (props.create ? "green" : "red")};
@@ -277,17 +279,17 @@ const Button = styled.div`
   border-radius: 5px;
   position: absolute;
   top: 775px;
-    button{
+  button {
     color: white;
     border: none;
     position: absolute;
     z-index: 90;
-    font-weight: 600;  
+    font-weight: 600;
     background: none;
     padding: 10px 125px;
     cursor: pointer;
   }
-    a{
+  a {
     color: white;
     border: none;
     font-weight: 600;
@@ -297,30 +299,26 @@ const Button = styled.div`
     background: none;
     cursor: pointer;
     padding: 7px 100px;
-    }
-`
+  }
+`;
 const Temperaments = styled.div`
-height: 130px;
-display: flex;
-flex-wrap: wrap;
-position: absolute;
-top: 650px;
-margin-left: 100px;
-flex-wrap: wrap;
-width: 600px;
+  height: 130px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 650px;
+  margin-left: 100px;
+  flex-wrap: wrap;
+  width: 600px;
 
-
-div{
-  height: 25px;
-  margin: 3px;
-  padding: 3px;
-  border-radius: 5px;
-  text-align: center;
-  border: 1px solid black;
-}
-
-`
-
-;
+  div {
+    height: 25px;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid black;
+  }
+`;
 
 export default CreateDog;

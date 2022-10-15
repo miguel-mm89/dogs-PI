@@ -4,18 +4,17 @@ const URL = 'https://api.thedogapi.com/v1/breeds'
 
 const dogsDBinfo = async ()=>{
 
-    let dogsDB1 = await Dog.findAll({ //aca creo un arreglo con todos los registros de la tabla dog
-        include: Temperament         //de la tabla temperaments para que funcione la vinculacion y la asignacion de los temperaments.
+    let dogsDB1 = await Dog.findAll({ 
+        include: Temperament         
         });       
     
     dogsDB1 = JSON.stringify(dogsDB1);
-    dogsDB1 = JSON.parse(dogsDB1); //// obtengo un json del arreglo donde aloje todos los dogs con sus temperamentos
+    dogsDB1 = JSON.parse(dogsDB1); 
     
-    //abajo itero sobre todos los registros de dogs para poder asiganrle a cada dogs los temperamentos correspondientes eso lo hago
-    //mediante el reduce y el concat y mediante el map mapeo el arreglo temperamentos para extraer el nombre de cada temperamento.
+   
     dogsDB1 = dogsDB1.reduce((acc, el) => acc.concat({
-        ...el, temperaments: el.temperaments.map(g => g.name)//Me quedo solo con el nombre de cada temperaments
-    }), [])// 
+        ...el, temperaments: el.temperaments.map(item => item.name)
+    }), [])
     return dogsDB1
 }
 const dogsAPIinfo = async ()=>{
