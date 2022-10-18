@@ -29,11 +29,11 @@ const FilterBy = () => {
     <section>
       <SelectDiv>
         <select onChange={handleSelect} name="" id="">
-          <option value="default">FILTER BY...</option>
-          <optgroup label="TEMPERAMENTS...">
+          <option value="default">FILTER BY</option>
+          <optgroup label="TEMPERAMENTS:">
             {temperaments &&
               temperaments.map((el) => (
-                <option key={el.name} value={el.name}>
+                <option className="options" key={el.name} value={el.name}>
                   {el.name}
                 </option>
               ))}
@@ -41,14 +41,14 @@ const FilterBy = () => {
         </select>
 
         <select onChange={handleSelect2} name="" id="">
-          <option value="default">ORDER BY...</option>
+          <option value="default">ORDER BY</option>
           <optgroup label="Weight">
-            <option value="asc">Max to Min</option>
-            <option value="desc">Min to Max</option>
+            <option className="options" value="asc">Max to Min</option>
+            <option className="options" value="desc">Min to Max</option>
           </optgroup>
           <optgroup label="Alphabetic">
-            <option value="A-Z">A - Z</option>
-            <option value="Z-A">Z - A</option>
+            <option className="options" value="A-Z">A - Z</option>
+            <option className="options" value="Z-A">Z - A</option>
           </optgroup>
         </select>
         <SearchDiv>
@@ -70,33 +70,58 @@ const FilterBy = () => {
   );
 };
 
-const SelectDiv = styled.div`
+const SelectDiv = styled.section`
   width: 100%;
   display: flex;
   margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  height: 28px;
+  margin-left: 15px;
+  margin-right: 25px;
+
   select {
     margin-right: 10px;
+    background: none;
+    border-radius: 5px;
+    background: rgba(129, 230, 217, 0.3);
+    color: black;
+    font-weight: 600;
+    border: 1px black solid;
+    padding: 5px;
+    text-align: center;
   }
+
+  .options{
+    background-color: none;
+    text-align: left;
+    border-radius: 10px;
+  }
+
 `;
 
 const Buttons = styled.div`
   position: relative;
-  justify-content: end;
   text-align: end;
-  width: 35%;
-  margin-right: 5px;
-  button{
+  width: 230px;
+  margin-right: 15px;
+
+  button {
     margin-left: 10px;
-    
+    background: none;
+    background: rgba(129, 230, 217, 0.3);
+    border: 1px black solid;
+    padding: 5px 10px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
   }
-`
+`;
 
 const SearchDiv = styled.div`
-  width: 40%;
-  text-align: center;
- 
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default FilterBy;

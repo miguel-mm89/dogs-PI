@@ -4,34 +4,108 @@ import styled from "styled-components"
 const LandingPage = () =>{
    return( 
    <BodyPage>
-    <Link to='/home'  >
-    Please, Bark !!!
+    <div class="wrap"><Link to='/home'>
+  <button class="button">Please, Bark !!!</button>
     </Link>
+</div>
     </BodyPage>
 )
 }
 
 
 const BodyPage = styled.div`
-background-image: url(https://images.unsplash.com/photo-1598134493179-51332e56807f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80);
-  background-position: 55% 100%; 
-  /* background-image: url(http://m.gettywallpapers.com/wp-content/uploads/2020/11/Dogs-Wallpaper-Desktop.jpg); */
+background-image: url(https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
   background-attachment: cover;
+  background-repeat: no-repeat;
   height: 959px;
   width: 100%;
+  overflow: hidden;
 
-  a{
-    color: black;
-    background-color: rgb(0,0,0,0.3);
-    text-decoration: none;
-    font-size: 35px;
-    padding: 15px 25px;
-    border-radius: 10px;
-    position: relative;
-    top: 400px;
-    left: 150px;
-    border: 2px solid black;
+
+.wrap{
+  height: 135%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+
+.button {
+  min-width: 300px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
   }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
 `
 
 export default LandingPage

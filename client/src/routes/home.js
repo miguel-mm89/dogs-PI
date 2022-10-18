@@ -24,9 +24,9 @@ const Home = () => {
   if (filtered === "LOADING...") {
     return (
       <>
+      <NavBar />
+       <FilterBy />
       <section>
-        <NavBar />
-        <FilterBy />
         <Loader>
           <div className="lds-roller">
             <div></div>
@@ -44,8 +44,9 @@ const Home = () => {
     );
   }
   return (
-    <section>
+    <>
       <NavBar />
+    <section>
       <FilterBy />
       {filtered === 'NO FOUND' ?
       <ContentDiv>
@@ -61,8 +62,9 @@ const Home = () => {
       <button onClick={()=> dispatch(chargeAll())}>TRY AGAIN</button>
     </ContentDiv>
    
-      : <HomeCards /> }
+   : <HomeCards /> }
     </section>
+   </>
   );
 };
 

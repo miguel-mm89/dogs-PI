@@ -21,9 +21,9 @@ const DogDetail = () =>{
 
     if (Object.entries(detail).length === 0) {
       return (
-        
-        <main>
+        <>
           <NavBar />
+        <section>
           <FilterBy />
           <Loader>
             <div class="lds-roller">
@@ -37,7 +37,8 @@ const DogDetail = () =>{
               <div></div>
             </div>
           </Loader>
-        </main>
+        </section>
+        </>
       
       );
     }

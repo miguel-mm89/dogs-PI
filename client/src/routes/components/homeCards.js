@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import Pagination from "./pagination";
 
 const HomeCards = () => {
-  const filtered = useSelector((state) => state.filtered);
+  const filtered = useSelector(state => state.filtered);
+  console.log(filtered)
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -53,11 +54,6 @@ const HomeCards = () => {
           </CardDiv>
         ))}
       </CardsContainer>
-      <Pagination
-       cardPerPage={cardPerPage}
-       totalCards={filtered.length}
-       paginate={setCurrentPage}
-       currentPage={currentPage}/>
     </main>
   );
 };
@@ -66,8 +62,11 @@ const CardsContainer = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 10px;
- 
+  height: 950px;
+  max-height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 `;
 const Name = styled.h3`
   margin-top: 0px;
@@ -92,6 +91,7 @@ export const CardDiv = styled.div`
   margin-top: 15px;
   width: 20%;
   height: auto;
+  max-height: 45%;
   display: flex;
   flex-direction: column;
   margin-left: 15px;
@@ -118,6 +118,11 @@ export const CardDiv = styled.div`
     margin-top: auto;
     box-shadow: 3px 2px 0 0 black;
   }
+
+  @media (max-width: 800px) {
+    width: 40%;
+  }
+
 `;
 
 export default HomeCards;

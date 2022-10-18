@@ -16,6 +16,8 @@ export default function Pagination({
     pageNumbers.push(i);
   }
 
+  // const NumberShow = pageNumbers.slice(currentPage -1, currentPage+3)
+
   return (
     <PaginationContainer>
       {pageNumbers?.map((item) => (
@@ -39,7 +41,7 @@ const PaginationContainer = styled.div`
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   `;
 
 const NumbersDiv = styled.button`

@@ -84,7 +84,7 @@ const CreateDog = () => {
     }
     setErrors(
       validate({
-        ...completed,
+          ...completed,
         [e.target.name]: e.target.value,
       })
     );

@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
       let total = await dogsTOTALinfo();
       res.status(200).json(total);
     } catch (error) {
-      throw new Error(error);
+     res.status(400).json('error no encuentro mi ciela')
     }
   }
 });
@@ -118,10 +118,10 @@ router.post("/", async (req, res) => {
 
 router.delete('./', async (req, res)=>{
   try {
-    let {name} = req.query
+    let {id} = req.params
     await dog.destroy({
       where: {
-        name: name
+        id: id
       }
     })
     res.status(200).json('borrado')

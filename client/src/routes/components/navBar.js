@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import {BsLinkedin} from 'react-icons/bs'
+import {AiFillGithub} from 'react-icons/ai'
 
 const NavBar = () => {
     return (
@@ -12,6 +14,14 @@ const NavBar = () => {
         Henry Dogs
       </NavLink>
       </Title>
+      <Links>
+      <a href='https://www.linkedin.com/in/miguel-a-morales-347587210/' >
+        <BsLinkedin/>
+      </a>
+      <a href='https://www.linkedin.com/in/miguel-a-morales-347587210/' >
+        <AiFillGithub/>
+      </a>
+      </Links>
       <Routediv>
       <NavLink to='/home'>HOME</NavLink>
       <NavLink to='/about'>ABOUT</NavLink>
@@ -26,8 +36,11 @@ const Title = styled.h1`
 height: 70px;
 margin-top: 0;
 padding: 5px;
-a{text-decoration: none;
-color: black;}
+width: 200px;
+a
+{text-decoration: none;
+color: black;
+}
 
 img{
   background: none;
@@ -42,16 +55,16 @@ height: 50px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-width: 1200px;
+max-width: 1200px;
 margin-left: auto;
 margin-right: auto;
 `
 const Routediv = styled.div`
-width: 40%;
+width: 350px;
 justify-content: space-between;
 text-align: end;
 margin-top: auto;
- margin-bottom: auto;
+margin-bottom: auto;
 a{
   margin-left: 5px;
   text-decoration: none;
@@ -67,6 +80,18 @@ a{
   background-color: rgb(159, 43, 43);
   border: 1px solid black;
   }
+`
+
+const Links = styled.div`
+padding: 7px;
+font-size: 32px;
+background: none;
+margin-left: 20%;
+a{
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
 `
 
 export default NavBar

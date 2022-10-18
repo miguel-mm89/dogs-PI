@@ -5,12 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: none;
-  /* color: white; */
-  /* width: 1200px; */
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(46, 137, 173);
+  max-width: 3200px;
+  background-color: rgb(48, 126, 155);
+  /* background-image: url(./pics/brandon-day-oCJuJQqvCzc-unsplash.jpg); */
+  background-attachment: cover;
 }
 
 
@@ -18,14 +18,13 @@ body {
 header{
   max-width: 3200px;
   border-bottom: 1px solid rgb(17, 17, 17);
-
+  background-color: rgb(48, 126, 155);
 }
 
 section {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  /* margin: 10px auto; */
 }
 
 main{
@@ -36,10 +35,9 @@ main{
 }
 
 .prueba{
-  background-color:#c98b19;
+  background-color:rgb(207, 200, 188);
 }
 
 section main{
-  /* background-image: url(http://m.gettywallpapers.com/wp-content/uploads/2020/11/Dogs-Wallpaper-Desktop.jpg); */
   background-attachment: cover;
 }

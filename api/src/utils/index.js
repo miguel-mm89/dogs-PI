@@ -25,7 +25,7 @@ const dogsAPIinfo = async ()=>{
             const conv1 = (data) =>{
                 if(data){
                 return data} else{
-                    return 'null'
+                    return null
                 }
             }
                      
