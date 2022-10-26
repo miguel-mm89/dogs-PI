@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import FilterBy from "./components/filterBy";
 import HomeCards from "./components/homeCards";
-import NavBar from "./components/navBar";
+
 import styled from "styled-components";
 
 import Nofound from './../pics/saddog.jpg'
@@ -24,7 +24,6 @@ const Home = () => {
   if (filtered === "LOADING...") {
     return (
       <>
-      <NavBar />
        <FilterBy />
       <section>
         <Loader>
@@ -45,7 +44,6 @@ const Home = () => {
   }
   return (
     <>
-      <NavBar />
     <section>
       <FilterBy />
       {filtered === 'NO FOUND' ?
@@ -171,6 +169,7 @@ background-color: rgb(17, 17, 17,.5);
 text-align: center;
 color: whitesmoke;
 border-radius: 10px;
+
 
 img{
     width: 80%;

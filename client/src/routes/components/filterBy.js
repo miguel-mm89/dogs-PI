@@ -39,14 +39,13 @@ const FilterBy = () => {
               ))}
           </optgroup>
         </select>
-
         <select onChange={handleSelect2} name="" id="">
           <option value="default">ORDER BY</option>
-          <optgroup label="Weight">
+          <optgroup className="options" label="Weight">
             <option className="options" value="asc">Max to Min</option>
             <option className="options" value="desc">Min to Max</option>
           </optgroup>
-          <optgroup label="Alphabetic">
+          <optgroup className="options" label="Alphabetic">
             <option className="options" value="A-Z">A - Z</option>
             <option className="options" value="Z-A">Z - A</option>
           </optgroup>
@@ -78,22 +77,23 @@ const SelectDiv = styled.section`
   margin-left: 15px;
   margin-right: 25px;
 
+
   select {
     margin-right: 10px;
     background: none;
     border-radius: 5px;
-    background: rgba(129, 230, 217, 0.3);
+    background-color: rgb(240, 181, 80);
     color: black;
-    font-weight: 600;
+    font-weight: bold;
     border: 1px black solid;
     padding: 5px;
     text-align: center;
+    width: 120px;
+  
   }
 
   .options{
-    background-color: none;
     text-align: left;
-    border-radius: 10px;
   }
 
 `;
@@ -101,16 +101,18 @@ const SelectDiv = styled.section`
 const Buttons = styled.div`
   position: relative;
   text-align: end;
-  width: 230px;
+  width: 350px;
   margin-right: 15px;
+
 
   button {
     margin-left: 10px;
     background: none;
-    background: rgba(129, 230, 217, 0.3);
+    background-color: rgb(240, 181, 80);
     border: 1px black solid;
     padding: 5px 10px;
     height: 28px;
+    width: 100px;
     cursor: pointer;
     border-radius: 5px;
     color: black;
@@ -120,8 +122,9 @@ const Buttons = styled.div`
 
 const SearchDiv = styled.div`
   width: auto;
-  margin-left: auto;
+  margin-left: 17%;
   margin-right: auto;
+ 
 `;
 
 export default FilterBy;

@@ -15,10 +15,10 @@ const NavBar = () => {
       </NavLink>
       </Title>
       <Links>
-      <a href='https://www.linkedin.com/in/miguel-a-morales-347587210/' >
+      <a href='https://www.linkedin.com/in/miguel-a-morales-347587210/'  target='_blank' rel="noreferrer">
         <BsLinkedin/>
       </a>
-      <a href='https://www.linkedin.com/in/miguel-a-morales-347587210/' >
+      <a href='https://github.com/miguel-mm89'  target='_blank' rel="noreferrer">
         <AiFillGithub/>
       </a>
       </Links>
@@ -86,7 +86,7 @@ const Links = styled.div`
 padding: 7px;
 font-size: 32px;
 background: none;
-margin-left: 20%;
+margin-left: 13%;
 a{
   color: black;
   text-decoration: none;

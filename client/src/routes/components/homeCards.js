@@ -6,24 +6,16 @@ import Pagination from "./pagination";
 
 const HomeCards = () => {
   const filtered = useSelector(state => state.filtered);
-  console.log(filtered)
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const [cardPerPage] = useState(8);
 
-
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
-  var currentCards;
-
+   let currentCards = filtered.slice(indexOfFirstCard, indexOfLastCard);
   
-  if (typeof filtered === "string") {
-    currentCards = filtered;
-  } else {
-    currentCards = filtered.slice(indexOfFirstCard, indexOfLastCard);
-  }
   
   return (
     <main>
@@ -67,6 +59,11 @@ const CardsContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  @media (max-width: 400px) {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 const Name = styled.h3`
   margin-top: 0px;
@@ -112,7 +109,7 @@ export const CardDiv = styled.div`
     text-decoration: none;
     color: white;
     padding: 7px 15px;
-    background-color: #c98b19;
+    background-color: rgb(159, 43, 43);
     border-radius: 5px;
     cursor: pointer;
     margin-top: auto;
@@ -121,6 +118,11 @@ export const CardDiv = styled.div`
 
   @media (max-width: 800px) {
     width: 40%;
+  }
+  @media (max-width: 400px) {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 `;

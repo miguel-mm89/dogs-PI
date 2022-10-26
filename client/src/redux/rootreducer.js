@@ -8,7 +8,6 @@ import {
   GET_BY_TEMPERAMENTS,
   FILTER_BY,
   CHARGE_ALL,
-  DELETE,
 } from "./actions";
 
 const initialState = {

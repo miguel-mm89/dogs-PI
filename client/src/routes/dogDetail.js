@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { getDetail, clean } from "../redux/actions"
 import { Link, useParams } from "react-router-dom"
 import styled from "styled-components";
-import NavBar from "./components/navBar";
 import { Loader } from "./home";
-import FilterBy from "./components/filterBy";
+
 
 const DogDetail = () =>{
     const dispatch = useDispatch()
     const {id} = useParams()
     
-    
+    console.log(id)
     useEffect(() => {
       dispatch(getDetail(id));
       return ()=> dispatch(clean())
@@ -22,11 +21,9 @@ const DogDetail = () =>{
     if (Object.entries(detail).length === 0) {
       return (
         <>
-          <NavBar />
         <section>
-          <FilterBy />
           <Loader>
-            <div class="lds-roller">
+            <div className="lds-roller">
               <div></div>
               <div></div>
               <div></div>
@@ -45,14 +42,13 @@ const DogDetail = () =>{
 
 
     return(
-    <>
-    <NavBar />        
+    <>      
     <Details>
         <ContainerDiv>
             <h2>{detail.name}</h2>            
             <img src={detail.image} alt={detail.name}/>
             {detail.temperaments?<p> <b>Temperaments: </b>{detail.temperaments}.</p>: null}
-            <p><b>Height: </b>{detail.height} metric</p>
+            <p><b>Height: </b>{detail.height} metric.</p>
             <p><b>Weight: </b>{detail.weight} KG.</p>
             <p><b>Life Span: </b>{detail.life_span}</p>
            <Link to="/home">

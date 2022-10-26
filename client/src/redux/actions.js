@@ -86,7 +86,6 @@ export function chargeAll() {
 
 export function orderBy(order) {
   return function (dispatch) {
-    console.log(order);
     dispatch({ type: ORDER_BY, payload: order });
     };
 }

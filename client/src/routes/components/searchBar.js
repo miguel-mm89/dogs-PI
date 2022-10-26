@@ -56,10 +56,14 @@ padding: 3px 7px;
 color: black;
 cursor: pointer;
 background: none;
+@media (max-width: 400px) {
+    right: 15px;
+    position: relative;
+    justify-content: end;
+  }
 `
 
 const Form = styled.form`
-/* width: 400px; */
 display: flex;
 flex-direction: row;
 label{
@@ -72,9 +76,14 @@ label{
 const SearchContainer = styled.div`
 display: flex;
 flex-direction: row;
-/* width: 390px; */
 margin-left: auto;
 margin-right: auto;
+@media (max-width: 400px) {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
 `
 const Div = styled.div`
 border: 1px solid black;
@@ -85,6 +94,15 @@ flex-direction: row;
 border-radius: 5px;
 height: 28px;
 padding: 2px;
+
+@media (max-width: 400px) {
+    width: 210px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 `
 
 

@@ -4,8 +4,8 @@ import styled from "styled-components"
 const LandingPage = () =>{
    return( 
    <BodyPage>
-    <div class="wrap"><Link to='/home'>
-  <button class="button">Please, Bark !!!</button>
+    <div className="wrap"><Link to='/home'>
+  <button className="button">Please, Bark !!!</button>
     </Link>
 </div>
     </BodyPage>
@@ -20,6 +20,8 @@ background-image: url(https://images.unsplash.com/photo-1541599540903-216a46ca1d
   height: 959px;
   width: 100%;
   overflow: hidden;
+  position: absolute;
+  top: 0px;
 
 
 .wrap{

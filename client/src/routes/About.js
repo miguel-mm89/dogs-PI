@@ -1,12 +1,10 @@
 import Felipe from './../pics/20211106_010610.jpg'
 import styled from 'styled-components'
-import NavBar from './components/navBar'
 import { Link } from 'react-router-dom'
 
 const About =()=>{
     return(
       <selection>
-        <NavBar/>
         <ContentDiv>
             <img src={Felipe} alt='Felipe PI'/>
             <h3>THIS WEB APPLICATION HAS BEEN CREATED BY MIGUEL MORALES </h3>
@@ -43,9 +41,11 @@ h3{
 }
 
 a{
-    padding: 10px;
     border-radius: 5px;
-    background-color: red;
+    background-color: rgb(159, 43, 43);
+    border: 1px solid black;
+    padding: 10px 25px;
+    width: 25%;
     color: whitesmoke;
     text-decoration: none;
     position: relative;

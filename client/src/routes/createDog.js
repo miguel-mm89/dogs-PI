@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogs, getTemperaments } from "../redux/actions";
 import styled from "styled-components";
-import NavBar from "./components/navBar";
+
 import { Link } from "react-router-dom";
 
 const CreateDog = () => {
@@ -41,26 +41,39 @@ const CreateDog = () => {
     let errors = {};
     if (!completed.name) {
       errors.name = "Dog Name is required";
-    } else if (completed.name.length < 3) {
+    } 
+     if (completed.name.length < 3) {
       errors.name = "Dog Name must have at least 3 characters";
     }
     if (!completed.heightmin || !completed.heightmax) {
       errors.height = "Dog height is required";
-    } else if (completed.heightmax <= completed.heightmin) {
+    } 
+     if (parseInt(completed.heightmax) <= parseInt(completed.heightmin)) {
       errors.height = "Height-max must be highter than height-min";
     }
     if (!completed.weightmin || !completed.weightmax) {
       errors.weight = "Dog height is required";
-    } else if (completed.weightmax <= completed.weightmin) {
+    } 
+     if (parseInt(completed.weightmax) <= parseInt(completed.weightmin)) {
       errors.weight = "Weight-max must be highter than height-min";
     }
     if (!completed.life_spanmin || !completed.life_spanmax) {
       errors.life_span = "Dog life span is required";
-    } else if (completed.life_spanmax <= completed.life_spanmin) {
+    } 
+     if (parseInt(completed.life_spanmax) <= parseInt(completed.life_spanmin)) {
       errors.life_span = "Life span-max must be highter than life span-min";
     }
     if (completed.temperaments.length === 0) {
       errors.temperaments = "Temperaments are required";
+    }
+    if (completed.life_spanmax < 0 || completed.life_spanmin < 0) {
+      errors.life_span = "Value must be highter than 0";
+    }
+    if (completed.weightmax < 0 || completed.weightmin < 0) {
+      errors.weight = "Value must be highter than 0";
+    }
+    if (completed.heightmax < 0 || completed.heightmin < 0) {
+      errors.height = "Value must be highter than 0";
     }
 
     return errors;
@@ -77,14 +90,18 @@ const CreateDog = () => {
   };
 
   const handleTemperaments = (e) => {
-    if (!completed.temperaments.includes(e.target.value)) {
+    if (
+      !completed.temperaments.includes(
+        tempForm.find((item) => item.name === e.target.value)
+      )
+    ) {
       completed.temperaments.push(
         tempForm.find((item) => item.name === e.target.value)
       );
     }
     setErrors(
       validate({
-          ...completed,
+        ...completed,
         [e.target.name]: e.target.value,
       })
     );
@@ -99,7 +116,6 @@ const CreateDog = () => {
       })
     );
     if (Object.values(errors).length === 0) {
-      console.log(finalForm);
       axios.post("http://localhost:3001/dogs", finalForm);
       setCreate(!create);
       setCompleted(initialState);
@@ -115,13 +131,12 @@ const CreateDog = () => {
 
   return (
     <>
-      <NavBar />
       <section>
         <FormContainer create={create}>
           {!create ? (
             <h2>COMPLETE THE FORM</h2>
           ) : (
-            <h2 className="create">BREED HAS BEEN CREATE SUCCESSFULLY</h2>
+            <h2 className="create">BREED HAS BEEN CREATED SUCCESSFULLY</h2>
           )}
           <Form onSubmit={(e) => handleSubmit(e)}>
             <Label>Breed Name:</Label>
