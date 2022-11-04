@@ -2,13 +2,15 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const LandingPage = () =>{
-   return( 
+   return(
+    <Back>
    <BodyPage>
     <div className="wrap"><Link to='/home'>
   <button className="button">Please, Bark !!!</button>
     </Link>
 </div>
     </BodyPage>
+    </Back> 
 )
 }
 
@@ -22,14 +24,16 @@ background-image: url(https://images.unsplash.com/photo-1541599540903-216a46ca1d
   overflow: hidden;
   position: absolute;
   top: 0px;
+  margin-left: auto;
+  margin-right: auto;
 
 
 .wrap{
-  height: 135%;
+  height: 150%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 55%;
 }
 
 .button {
@@ -108,6 +112,16 @@ button:hover::after, button:focus::after {
   }
 }
 
+`
+
+const Back = styled.header`
+width: 100%;
+height: 100%;
+background-color: black;
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+top: 0;
 `
 
 export default LandingPage

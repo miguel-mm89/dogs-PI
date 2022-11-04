@@ -7,7 +7,7 @@ import Pagination from "./pagination";
 const HomeCards = () => {
   const filtered = useSelector(state => state.filtered);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector(state => state.currentPage)
 
   const [cardPerPage] = useState(8);
 
@@ -15,14 +15,13 @@ const HomeCards = () => {
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
    let currentCards = filtered.slice(indexOfFirstCard, indexOfLastCard);
-  
+  console.log(currentPage)
   
   return (
     <main>
       <Pagination
         cardPerPage={cardPerPage}
         totalCards={filtered.length}
-        paginate={setCurrentPage}
         currentPage={currentPage}
       />
       <CardsContainer>

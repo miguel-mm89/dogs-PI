@@ -11,13 +11,14 @@ export const VOLVER_A_HOME = 'VOLVER_A_HOME'
 export const FILTER_BY = 'FILTER_BY'
 export const CHARGE_ALL = 'CHARGE_ALL'
 export const DELETE = 'DELETE'
+export const PAGINATE = 'PAGINATE'
 
 
 
 export function getDogs() {
   return async function (dispatch) {
     try {
-      var res = await axios.get("http://localhost:3001/dogs");
+      var res = await axios.get("/dogs");
       return dispatch({
         type: GET_DOGS,
         payload: res.data,
@@ -32,7 +33,7 @@ export function getDogs() {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      var res = await axios.get("http://localhost:3001/temperaments");
+      var res = await axios.get("/temperaments");
       return dispatch({
         type: GET_TEMPERAMENTS,
         payload: res.data
@@ -53,7 +54,7 @@ export function getByName(payload) {
 export function getDetail(id) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/dogs/${id}`)
+      .get(`/dogs/${id}`)
       .then((res) => {
         dispatch({ type: GET_DETAIL, payload: res.data });
       })
@@ -94,4 +95,8 @@ export function clean(){
   return function(dispatch){
     dispatch({type:CLEAN})
   }
+}
+
+export const paginate = (page) => (dispatch) => {
+  dispatch({type: PAGINATE, payload: page})
 }

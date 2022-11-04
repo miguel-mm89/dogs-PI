@@ -18,7 +18,7 @@ body {
 header{
   max-width: 3200px;
   border-bottom: 1px solid rgb(17, 17, 17);
-  background-color: rgb(48, 126, 155);
+  /* background-color: rgb(48, 126, 155); */
 }
 
 section {

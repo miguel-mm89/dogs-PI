@@ -116,7 +116,7 @@ const CreateDog = () => {
       })
     );
     if (Object.values(errors).length === 0) {
-      axios.post("http://localhost:3001/dogs", finalForm);
+      axios.post("/dogs", finalForm);
       setCreate(!create);
       setCompleted(initialState);
     }
@@ -143,6 +143,7 @@ const CreateDog = () => {
             <input
               type="text"
               name="name"
+              autocomplete='off'
               value={completed.name}
               onChange={handleChange}
             />
@@ -208,6 +209,7 @@ const CreateDog = () => {
               placeholder="Put a URL"
               type="text"
               onChange={handleChange}
+              autocomplete='off'
             />
             <br />
             <p>Temperaments:</p>

@@ -8,6 +8,7 @@ import {
   GET_BY_TEMPERAMENTS,
   FILTER_BY,
   CHARGE_ALL,
+  PAGINATE,
 } from "./actions";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   temperaments: [],
   filtered: 'LOADING...',
   dogDetail: {},
+  currentPage: 1,
 };
 
 function rootReducer(state = initialState, action) {
@@ -48,18 +50,22 @@ function rootReducer(state = initialState, action) {
         if(byname.length === 0){
           return {
             ...state,
-            filtered: 'NO FOUND'
+            filtered: 'NO FOUND',
+            currentPage: 1
           }
         } else return{
           ...state,
-          filtered: byname
+          filtered: byname,
+          currentPage: 1
         }
 
     case GET_BY_TEMPERAMENTS:
       return {
         ...state,
+        currentPage: 1,
         filtered: state.dogs.filter((el) =>
-          el.temperaments ? el.temperaments.includes(action.payload) : null
+          el.temperaments ? el.temperaments.includes(action.payload) : null,
+          
         )}
 
     case CHARGE_ALL:
@@ -89,6 +95,7 @@ function rootReducer(state = initialState, action) {
       if (action.payload === "A-Z") {
         return {
           ...state,
+          currentPage: 1,
           filtered: [...state.filtered].sort((prev, next) => {
             if (prev.name > next.name) return 1;
             if (prev.name < next.name) return -1;
@@ -100,6 +107,7 @@ function rootReducer(state = initialState, action) {
       if (action.payload === "Z-A") {
         return {
           ...state,
+          currentPage: 1,
           filtered: [...state.filtered].sort((prev, next) => {
             if (prev.name > next.name) return -1;
             if (prev.name < next.name) return 1;
@@ -111,6 +119,7 @@ function rootReducer(state = initialState, action) {
       if (action.payload === "desc") {
         return {
           ...state,
+          currentPage: 1,
           filtered: [...state.filtered].sort(
             (prev, next) => prev.weight.slice(0, 2) - next.weight.slice(0, 2)
           ),
@@ -120,12 +129,18 @@ function rootReducer(state = initialState, action) {
       if (action.payload === "asc") {
         return {
           ...state,
+          currentPage: 1,
           filtered: [...state.filtered].sort(
             (prev, next) => next.weight.slice(0, 2) - prev.weight.slice(0, 2)
           ),
         };
       } else {
         return { ...state, filtered: state.dogs };
+      }
+      case PAGINATE: 
+      return{
+       ...state, 
+       currentPage: action.payload
       }
 
     default:
